@@ -59,6 +59,14 @@ public class MasterABEntry {
 	public String getHouseHold() {
 		return houseHold;
 	}
+	
+	public boolean isValidEntry() {
+		return getCard1() != null && getEssence() != null && getAffluence() != null && getGenderAge() != null
+				&& getEthnicity() != null && getCookingStyle() != null && getHealthWellness() != null
+				&& getMarshSegment() != null && getPriceSensitivity() != null && getPrimaryStoreNum() != null
+				&& getkIncome() != null && getkGeneration() != null && getkEthnicCode() != null
+				&& getkAgeRange() !=null;
+	}
 
 	@Override
 	public String toString() {

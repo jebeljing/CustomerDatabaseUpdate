@@ -1,26 +1,12 @@
 package util;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import model.MasterABEntry;
-
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class TxtFileReader {
 	
@@ -72,7 +58,7 @@ public class TxtFileReader {
 		while((line = br.readLine()) != null) {
 			if (line.startsWith("card")) {
 				String[] split = line.split("\\|");
-				System.out.println(split.length);
+//				System.out.println(split.length);
 				continue;
 			}
 			String[] split = line.split("\\|");
@@ -171,7 +157,7 @@ public class TxtFileReader {
 		while((line = br.readLine()) != null) {
 			if (line.startsWith("Household")) {
 				String[] split = line.split("\\|");
-				System.out.println(split.length);
+//				System.out.println(split.length);
 				continue;
 			}
 			String tempLine = null;
@@ -193,6 +179,38 @@ public class TxtFileReader {
 			} else {
 				MasterABEntry existEntry = updateMaps.get(split[0]);
 				existEntry.setPriceSensitivity(split[1]);
+				
+				updateMaps.put(split[0], existEntry);
+			}
+		}
+		br.close();
+	}
+	
+	public void readSpireEngagementSegment(Map<String, MasterABEntry> updateMaps) throws IOException {
+		readFile();
+		String line = null;
+		while((line = br.readLine()) != null) {
+			String tempLine = null;
+			String[] split = null;
+			if (line.startsWith("-")) {
+				tempLine = line.substring(1);
+				split = tempLine.split("\\|");
+			} else {
+				split = line.split("\\|");
+			}
+//			System.out.println(split.length);
+			if (split.length < 1) continue;
+			if (updateMaps.get(split[0]) == null) {
+				MasterABEntry entry = new MasterABEntry();
+				entry.setCard1(split[0]);
+				entry.setPrimaryStoreNum(split[2]);
+				entry.setMarshSegment(split[5]);
+				
+				updateMaps.put(entry.getCard1(), entry);
+			} else {
+				MasterABEntry existEntry = updateMaps.get(split[0]);
+				existEntry.setPrimaryStoreNum(split[2]);
+				existEntry.setMarshSegment(split[5]);
 				
 				updateMaps.put(split[0], existEntry);
 			}
