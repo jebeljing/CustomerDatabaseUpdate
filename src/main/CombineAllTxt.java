@@ -11,7 +11,7 @@ public class CombineAllTxt {
 	private static final String essenceFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Spire HH Essence Scores 20150911.TXT";
 	private static final String syndicatedSegmentFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Marsh_SyndicatedSegment_Extract_20150828.txt";
 	private static final String marshDemoFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Marsh_Demo_Extract_20150828.txt";
-	private static final String marshHHsPSFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Marsh HHs PS Segmentation Assignments 20150724.txt";
+	private static final String marshHHsPSFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Marsh HHs PS Segmentation Assignments 20150911.txt";
 	private static final String spireEngagementSegmentFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Spire Engagement Segmentation Households - 091115.txt";
 	
 	public static Map<String, MasterABEntry> combine() throws Exception {

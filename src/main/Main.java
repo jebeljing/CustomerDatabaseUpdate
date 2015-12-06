@@ -11,11 +11,14 @@ public class Main {
 		Map<String, MasterABEntry> data = CombineAllTxt.combine();
 		System.out.println(data.keySet().size());
 		
-		Map<String, MasterABEntry> finalValidData = CombineAllTxt.reduce(data);
-		System.out.println(finalValidData.keySet().size());
-		for (String entry : finalValidData.keySet()) {
-			System.out.println(finalValidData.get(entry));
-		}
+//		Map<String, MasterABEntry> finalValidData = CombineAllTxt.reduce(data);
+//		System.out.println(finalValidData.keySet().size());
+//		for (String entry : finalValidData.keySet()) {
+//			System.out.println(finalValidData.get(entry));
+//		}
+		
+//		MatchMasterAB.writeXLSXFile(finalValidData);
+		MatchMasterAB.writeToCSV(data);
 	}
 
 }
