@@ -15,9 +15,10 @@ public class CombineAllTxt {
 	private static final String spireEngagementSegmentFile = "C:\\Users\\lalala123\\Desktop\\Work\\CustomerDBUpdate\\Master AB updated\\01242016\\Spire Engagement Segmentation Households - 010216.txt";
 	
 	public static Map<String, MasterABEntry> combine() throws Exception {
+		
 		TxtFileReader txtFileReader = new TxtFileReader(essenceFile);
 		Map<String, MasterABEntry> updateMaps = new HashMap<String, MasterABEntry>();
-		
+		txtFileReader.setCustomerMatchDB();
 		txtFileReader.readSpireHHEssenceScores(updateMaps);
 //		System.out.println(updateMaps.keySet().size());
 //		if (updateMaps.get("40006623968") != null) {

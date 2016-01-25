@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.poi.ss.formula.functions.Value;
 
+import main.MatchMasterAB;
 import model.MarshIndexEntry;
 import model.MasterABEntry;
 
@@ -15,9 +16,21 @@ public class TxtFileReader {
 	
 	private String fileName;
 	private BufferedReader br = null;
+	private Map<String, MarshIndexEntry> readHouseholdCustomerMatchDB;
 	
 	public TxtFileReader(String fileName) {
 		this.fileName = fileName;
+		
+	}
+	
+	public void setCustomerMatchDB() {
+		if (readHouseholdCustomerMatchDB == null) {
+			try {
+				readHouseholdCustomerMatchDB = MatchMasterAB.readHouseholdCustomerMatchDB();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public String getFileName() {
@@ -35,7 +48,14 @@ public class TxtFileReader {
 			if (line.startsWith("Household")) continue;
 			String[] split = line.split("\\|");
 			MasterABEntry entry = new MasterABEntry();
-			entry.setCard1(split[0]);
+			entry.setHouseHold(split[0]);
+			if (this.readHouseholdCustomerMatchDB.get(split[0]) != null) {
+				entry.setCard1(this.readHouseholdCustomerMatchDB.get(split[0]).getCard1());
+				entry.setCard2(this.readHouseholdCustomerMatchDB.get(split[0]).getCard2());
+				entry.setCard3(this.readHouseholdCustomerMatchDB.get(split[0]).getCard3());
+			} else {
+				continue;
+			}
 			entry.setEssence(ValueToCompre.transformEssence(split[1]));
 			entry.setAffluence(ValueToCompre.transformAffluence(split[2]));
 			entry.setGenderAge(ValueToCompre.transformGenAge(split[4]));
@@ -73,6 +93,13 @@ public class TxtFileReader {
 			if (updateMaps.get(split[0]) == null) {
 				MasterABEntry entry = new MasterABEntry();
 				entry.setCard1(split[0]);
+				if (this.readHouseholdCustomerMatchDB.get(split[0]) != null) {
+					entry.setHouseHold(this.readHouseholdCustomerMatchDB.get(split[0]).getHousehold());
+					entry.setCard2(this.readHouseholdCustomerMatchDB.get(split[0]).getCard2());
+					entry.setCard3(this.readHouseholdCustomerMatchDB.get(split[0]).getCard3());
+				} else {
+					continue;
+				}
 				entry.setFoodies(split[2]);
 				entry.setHealthAndFit(split[3]);
 				entry.setNewParents(split[4]);
@@ -123,6 +150,13 @@ public class TxtFileReader {
 			if (updateMaps.get(split[0]) == null) {
 				MasterABEntry entry = new MasterABEntry();
 				entry.setCard1(split[0]);
+				if (this.readHouseholdCustomerMatchDB.get(split[0]) != null) {
+					entry.setHouseHold(this.readHouseholdCustomerMatchDB.get(split[0]).getHousehold());
+					entry.setCard2(this.readHouseholdCustomerMatchDB.get(split[0]).getCard2());
+					entry.setCard3(this.readHouseholdCustomerMatchDB.get(split[0]).getCard3());
+				} else {
+					continue;
+				}
 				entry.setkAgeRange(ValueToCompre.transformKAgeRange(split.length > 1 && !split[1].isEmpty() ? split[1] : "Unknown"));
 				entry.setNumberOfAdults(split.length > 2 && !split[2].isEmpty() ? split[2] : null);
 				entry.setNumberOfChildren(split.length > 3 && !split[3].isEmpty()  ? split[3] : null);
@@ -186,7 +220,14 @@ public class TxtFileReader {
 			if (split.length < 1) continue;
 			if (updateMaps.get(split[0]) == null) {
 				MasterABEntry entry = new MasterABEntry();
-				entry.setCard1(split[0]);
+				entry.setHouseHold(split[0]);
+				if (this.readHouseholdCustomerMatchDB.get(split[0]) != null) {
+					entry.setCard1(this.readHouseholdCustomerMatchDB.get(split[0]).getCard1());
+					entry.setCard2(this.readHouseholdCustomerMatchDB.get(split[0]).getCard2());
+					entry.setCard3(this.readHouseholdCustomerMatchDB.get(split[0]).getCard3());
+				} else {
+					continue;
+				}
 				entry.setPriceSensitivity(split[1]);
 				entry.setkAgeRange("Unknown");
 				entry.setkEthnicCode("Unknown");
@@ -197,7 +238,7 @@ public class TxtFileReader {
 				MasterABEntry existEntry = updateMaps.get(split[0]);
 				existEntry.setPriceSensitivity(split[1]);
 				
-				updateMaps.put(split[0], existEntry);
+				updateMaps.put(existEntry.getCard1(), existEntry);
 			}
 			split = null;
 		}
@@ -220,7 +261,22 @@ public class TxtFileReader {
 			if (split.length < 1) continue;
 			if (updateMaps.get(split[0]) == null) {
 				MasterABEntry entry = new MasterABEntry();
-				entry.setCard1(split[0]);
+//				entry.setCard1(split[0]);
+//				if (this.readHouseholdCustomerMatchDB.get(split[0]) != null) {
+//					entry.setHouseHold(this.readHouseholdCustomerMatchDB.get(split[0]).getHousehold());
+//					entry.setCard2(this.readHouseholdCustomerMatchDB.get(split[0]).getCard2());
+//					entry.setCard3(this.readHouseholdCustomerMatchDB.get(split[0]).getCard3());
+//				} else {
+//					continue;
+//				}
+				entry.setHouseHold(split[0]);
+				if (this.readHouseholdCustomerMatchDB.get(split[0]) != null) {
+					entry.setCard1(this.readHouseholdCustomerMatchDB.get(split[0]).getCard1());
+					entry.setCard2(this.readHouseholdCustomerMatchDB.get(split[0]).getCard2());
+					entry.setCard3(this.readHouseholdCustomerMatchDB.get(split[0]).getCard3());
+				} else {
+					continue;
+				}
 				entry.setPrimaryStoreNum(split[2]);
 				entry.setMarshSegment(split[5]);
 				entry.setkAgeRange("Unknown");
@@ -233,7 +289,7 @@ public class TxtFileReader {
 				existEntry.setPrimaryStoreNum(split[2]);
 				existEntry.setMarshSegment(split[5]);
 				
-				updateMaps.put(split[0], existEntry);
+				updateMaps.put(existEntry.getCard1(), existEntry);
 			}
 			split = null;
 		}
@@ -276,6 +332,7 @@ public class TxtFileReader {
 			entry.setCard2(split.length > 2 && !split[2].isEmpty() ? split[2] : null);
 			entry.setCard3(split.length > 3 && !split[3].isEmpty() ? split[3] : null);
 			originalHouseholdCustomerDB.put(entry.getCard1(), entry);
+			originalHouseholdCustomerDB.put(entry.getHousehold(), entry);
 			if (entry.getCard2() != null) {
 				originalHouseholdCustomerDB.put(entry.getCard2(), entry);
 			}

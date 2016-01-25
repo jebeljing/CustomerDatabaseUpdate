@@ -58,7 +58,8 @@ public class MatchMasterAB {
 				}
 			} else {
 				MasterABEntry masterABEntry = updatingMap.get(card1);
-				updatingMapNew.put(card1, masterABEntry);
+//				updatingMapNew.put(card1, masterABEntry);
+				System.out.println("Not in Frank's file: (Card1) " + masterABEntry.getCard1());
 			}
 		}
 		System.out.println("After match with Marsh: " + updatingMapNew.keySet().size());
@@ -156,13 +157,9 @@ public class MatchMasterAB {
 				}
 				fw.write(entry.getCard1() != null ? entry.getCard1() : empty); fw.write(",");
 //				fw2.write("card_num: " + entry.getCard1() + "\n");
-				if (tempEntry != null) {
-					fw.write(tempEntry.getCard2() != null ? tempEntry.getCard2() : empty); fw.write(",");
-					fw.write(tempEntry.getCard3() != null ? tempEntry.getCard3() : empty); fw.write(",");
-				} else {
-					fw.write(entry.getCard2() != null ? entry.getCard2() : empty); fw.write(",");
-					fw.write(entry.getCard3() != null ? entry.getCard3() : empty); fw.write(",");
-				}
+				fw.write(entry.getCard2() != null ? entry.getCard2() : empty); fw.write(",");
+				fw.write(entry.getCard3() != null ? entry.getCard3() : empty); fw.write(",");
+				
 				fw.write(entry.getEssence() != null ? entry.getEssence() : empty); fw.write(",");
 				fw.write(entry.getAffluence() != null ? entry.getAffluence() : empty); fw.write(",");
 				fw.write(entry.getGenderAge() != null ? entry.getGenderAge() : empty); fw.write(",");
