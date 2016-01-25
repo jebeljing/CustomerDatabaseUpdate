@@ -32,6 +32,7 @@ public class TxtFileReader {
 		readFile();
 		String line = null;
 		while((line = br.readLine()) != null) {
+			if (line.startsWith("Household")) continue;
 			String[] split = line.split("\\|");
 			MasterABEntry entry = new MasterABEntry();
 			entry.setCard1(split[0]);
@@ -43,6 +44,10 @@ public class TxtFileReader {
 			entry.setHealthWellness(ValueToCompre.transformHW(split[7]));
 			entry.setDietStyle(ValueToCompre.transformDieter(split[8]));
 			entry.setSpecialDietaryNeeds(ValueToCompre.transformSpNeeds(split[9]));
+			entry.setkAgeRange("Unknown");
+			entry.setkEthnicCode("Unknown");
+			entry.setkGeneration("Unknown");
+			entry.setkIncome("Unknown");
 			split = null;
 			//TODO need to double check duplicate
 			if (updateMaps.get(entry.getCard1()) == null) {
@@ -77,6 +82,10 @@ public class TxtFileReader {
 				entry.setWeightLossAndSupplements(split[9]);
 				entry.setCatProductBuyers(split[11]);
 				entry.setDogProductBuyers(split[12]);
+				entry.setkAgeRange("Unknown");
+				entry.setkEthnicCode("Unknown");
+				entry.setkGeneration("Unknown");
+				entry.setkIncome("Unknown");
 				updateMaps.put(entry.getCard1(), entry);
 			} else {
 //				System.out.println("Existing: " + split[0]);
@@ -90,6 +99,10 @@ public class TxtFileReader {
 				existEntry.setWeightLossAndSupplements(split[9]);
 				existEntry.setCatProductBuyers(split[11]);
 				existEntry.setDogProductBuyers(split[12]);
+				existEntry.setkAgeRange("Unknown");
+				existEntry.setkEthnicCode("Unknown");
+				existEntry.setkGeneration("Unknown");
+				existEntry.setkIncome("Unknown");
 				updateMaps.put(split[0], existEntry);
 			}
 			split = null;
@@ -175,10 +188,10 @@ public class TxtFileReader {
 				MasterABEntry entry = new MasterABEntry();
 				entry.setCard1(split[0]);
 				entry.setPriceSensitivity(split[1]);
-				entry.setkAgeRange(ValueToCompre.transformKAgeRange(split.length > 1 && !split[1].isEmpty() ? split[1] : "Unknown"));
-				entry.setkEthnicCode(ValueToCompre.transformKEthnicCode(split.length > 18 && !split[18].isEmpty()  ? split[18] : "Unknown"));
-				entry.setkGeneration(ValueToCompre.transformKGeneration(split.length > 19 && !split[19].isEmpty()  ? split[19] : "Unknown"));
-				entry.setkIncome(ValueToCompre.transformKIncome(split.length > 24 && !split[24].isEmpty()  ? split[24] : "Unknown"));
+				entry.setkAgeRange("Unknown");
+				entry.setkEthnicCode("Unknown");
+				entry.setkGeneration("Unknown");
+				entry.setkIncome("Unknown");
 				updateMaps.put(entry.getCard1(), entry);
 			} else {
 				MasterABEntry existEntry = updateMaps.get(split[0]);
@@ -210,10 +223,10 @@ public class TxtFileReader {
 				entry.setCard1(split[0]);
 				entry.setPrimaryStoreNum(split[2]);
 				entry.setMarshSegment(split[5]);
-				entry.setkAgeRange(ValueToCompre.transformKAgeRange(split.length > 1 && !split[1].isEmpty() ? split[1] : "Unknown"));
-				entry.setkEthnicCode(ValueToCompre.transformKEthnicCode(split.length > 18 && !split[18].isEmpty()  ? split[18] : "Unknown"));
-				entry.setkGeneration(ValueToCompre.transformKGeneration(split.length > 19 && !split[19].isEmpty()  ? split[19] : "Unknown"));
-				entry.setkIncome(ValueToCompre.transformKIncome(split.length > 24 && !split[24].isEmpty()  ? split[24] : "Unknown"));
+				entry.setkAgeRange("Unknown");
+				entry.setkEthnicCode("Unknown");
+				entry.setkGeneration("Unknown");
+				entry.setkIncome("Unknown");
 				updateMaps.put(entry.getCard1(), entry);
 			} else {
 				MasterABEntry existEntry = updateMaps.get(split[0]);

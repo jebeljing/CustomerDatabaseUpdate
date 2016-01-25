@@ -10,6 +10,8 @@ public class Main {
 
 		Map<String, MasterABEntry> data = CombineAllTxt.combine();
 		System.out.println(data.keySet().size());
+		System.out.println("hello:  " + data.get("40003382997"));
+		
 		
 //		Map<String, MasterABEntry> finalValidData = CombineAllTxt.reduce(data);
 //		System.out.println(finalValidData.keySet().size());

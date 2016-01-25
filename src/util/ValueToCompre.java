@@ -126,7 +126,7 @@ public class ValueToCompre {
 		case "39": result = "Kosher Couples"; break;
 		case "40": result = "Kosher Families"; break;
 		default:
-			System.out.println("Undefined essence number" + input);
+			System.out.println("Undefined essence number " + input);
 			result = input;
 			break;
 		}
@@ -141,7 +141,7 @@ public class ValueToCompre {
 		case "3": result = "Mainstream"; break;
 		case "4": result = "Super Premium"; break;
 		default:
-			System.out.println("Undefined Affluence number" + input);
+			System.out.println("Undefined Affluence number " + input);
 			result = input;
 			break;
 		}
@@ -157,7 +157,7 @@ public class ValueToCompre {
 		case "4": result = "No Kids"; break;
 		case "5": result = "Families with Babies"; break;
 		default:
-			System.out.println("Undefined BabyKids number" + input);
+			System.out.println("Undefined BabyKids number " + input);
 			result = input;
 			break;
 		}
@@ -173,7 +173,7 @@ public class ValueToCompre {
 		case "4": result = "F"; break;
 		case "9": result = "M"; break;
 		default:
-			System.out.println("Undefined GenAge number" + input);
+			System.out.println("Undefined GenAge number " + input);
 			result = input;
 			break;
 		}
@@ -194,7 +194,7 @@ public class ValueToCompre {
 		case "9": result = "Low Ethnic"; break;
 		case "10": result = "Kosher"; break;
 		default:
-			System.out.println("Undefined Ethnic number" + input);
+			System.out.println("Undefined Ethnic number " + input);
 			result = input;
 			break;
 		}
@@ -210,7 +210,7 @@ public class ValueToCompre {
 		case "4": result = "Make It Quick"; break;
 		case "5": result = "Meat & Potatoes"; break;
 		default:
-			System.out.println("Undefined Cook number" + input);
+			System.out.println("Undefined Cook number " + input);
 			result = input;
 			break;
 		}
@@ -229,7 +229,7 @@ public class ValueToCompre {
 		case "7": result = "Sweet Tooth"; break;
 		case "8": result = "Low Health Concern"; break;
 		default:
-			System.out.println("Undefined HW number" + input);
+			System.out.println("Undefined HW number " + input);
 			result = input;
 			break;
 		}
@@ -246,7 +246,7 @@ public class ValueToCompre {
 		case "4": result = "Low Carb"; break;
 		case "7": result = "Healthy Snackers"; break;
 		default:
-			System.out.println("Undefined Dieter number" + input);
+			System.out.println("Undefined Dieter number " + input);
 			result = input;
 			break;
 		}
@@ -263,7 +263,7 @@ public class ValueToCompre {
 		case "5": result = "Soy"; break;
 		case "8": result = "Gluten-Free"; break;
 		default:
-			System.out.println("Undefined SpNeeds number" + input);
+			System.out.println("Undefined SpNeeds number " + input);
 			result = input;
 			break;
 		}
@@ -282,7 +282,7 @@ public class ValueToCompre {
 		case "6": result = "Other Only"; break;
 		case "7": result = "Dog & Cat & Other"; break;
 		default:
-			System.out.println("Undefined Pet number" + input);
+			System.out.println("Undefined Pet number " + input);
 			result = input;
 			break;
 		}

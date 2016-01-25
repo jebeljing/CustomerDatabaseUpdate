@@ -8,11 +8,11 @@ import model.MasterABEntry;
 
 public class CombineAllTxt {
 	
-	private static final String essenceFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Spire HH Essence Scores 20150911.TXT";
-	private static final String syndicatedSegmentFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Marsh_SyndicatedSegment_Extract_20150828.txt";
-	private static final String marshDemoFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Marsh_Demo_Extract_20150828.txt";
-	private static final String marshHHsPSFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Marsh HHs PS Segmentation Assignments 20150911.txt";
-	private static final String spireEngagementSegmentFile = "C:\\Users\\lalala123\\Desktop\\CustomerDBUpdate\\Master AB updated\\Spire Engagement Segmentation Households - 091115.txt";
+	private static final String essenceFile = "C:\\Users\\lalala123\\Desktop\\Work\\CustomerDBUpdate\\Master AB updated\\01242016\\Spire HH Essence Scores 20160102.TXT";
+	private static final String syndicatedSegmentFile = "C:\\Users\\lalala123\\Desktop\\Work\\CustomerDBUpdate\\Master AB updated\\01242016\\Marsh_SyndicatedSegment_Extract_20151218.txt";
+	private static final String marshDemoFile = "C:\\Users\\lalala123\\Desktop\\Work\\CustomerDBUpdate\\Master AB updated\\01242016\\Marsh_Demo_Extract_20151218.txt";
+	private static final String marshHHsPSFile = "C:\\Users\\lalala123\\Desktop\\Work\\CustomerDBUpdate\\Master AB updated\\01242016\\Marsh HHs PS Segmentation Assignments 20150911.txt";
+	private static final String spireEngagementSegmentFile = "C:\\Users\\lalala123\\Desktop\\Work\\CustomerDBUpdate\\Master AB updated\\01242016\\Spire Engagement Segmentation Households - 010216.txt";
 	
 	public static Map<String, MasterABEntry> combine() throws Exception {
 		TxtFileReader txtFileReader = new TxtFileReader(essenceFile);
@@ -20,7 +20,9 @@ public class CombineAllTxt {
 		
 		txtFileReader.readSpireHHEssenceScores(updateMaps);
 //		System.out.println(updateMaps.keySet().size());
-		
+//		if (updateMaps.get("40006623968") != null) {
+//			System.out.println(updateMaps.get("40006623968"));
+//		}
 		txtFileReader.setFileName(syndicatedSegmentFile);
 		txtFileReader.readMarshSyndicatedSegment(updateMaps);
 //		System.out.println(updateMaps.keySet().size());
